@@ -1,0 +1,15 @@
+<h1 style="color:DodgerBlue;">Welcome To Warehouse</h1><br>
+
+
+<%= link_to 'Sign up',  new_user_registration_path %><br>
+
+
+<label for="membership">Choose a Person:</label>
+<select name="membership" id="membership">
+  <option value="owner">Owner</option>
+  <option value="supplier">Supplier</option>
+  <option value="shopkeeper" selected>Shopkeeper</option>
+</select>
+
+<%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
+
