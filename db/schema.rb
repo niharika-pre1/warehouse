@@ -54,11 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_120444) do
   end
 
   create_table "warehouses", force: :cascade do |t|
-    t.integer "owner_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_warehouses_on_owner_id"
   end
 
 end
