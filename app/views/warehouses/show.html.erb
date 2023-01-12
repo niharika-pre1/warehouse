@@ -1,0 +1,31 @@
+<p>
+  <strong>name:</strong>
+  <%= @warehouse.name %>
+</p>
+
+
+<h2>Add a category:</h2>
+<%= form_with(model: [ @warehouse, @warehouse.categories.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', warehouses_path %>
+
+<h2>Categories</h2>
+<% @warehouse.categories.each do |category| %>
+  <p>
+    <strong>name:</strong>
+    <%= category.name %>
+  </p>
+  <%= button_to 'Destroy Category', [category.warehouse, category],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+ 
+<% end %>

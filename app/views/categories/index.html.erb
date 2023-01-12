@@ -1,16 +1,11 @@
 <h1>Listing Categories</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-   
-    <th colspan="3"></th>
-  </tr>
+<h2>Categories</h2>
+<% @warehouse.categories.each do |category| %>
+  <p>
+    <strong>name:</strong>
+    <%= category.name %>
+  </p>
  
-  <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.name %></td>
-      
-    </tr>
-  <% end %>
-</table>
+ 
+<% end %>
