@@ -1,11 +1,11 @@
-<h1>Listing Categories</h1>
-
-<h2>Categories</h2>
-<% @warehouse.categories.each do |category| %>
+<h1>Categories</h1>
+<% @categories.each do |category| %>
   <p>
     <strong>name:</strong>
     <%= category.name %>
   </p>
- 
- 
+   <td><%= link_to 'Show', warehouse_category_path(warehouse_id: category.warehouse_id,id: category.id) %></td>
+
+
+
 <% end %>

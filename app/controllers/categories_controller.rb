@@ -1,8 +1,15 @@
 class CategoriesController < ApplicationController
 
   def index
-  
+    @categories = Category.all
+    render 'categories/index'
   end
+   
+  def show
+    @warehouse = Warehouse.find(params[:warehouse_id])
+    @category = @warehouse.categories.find(params[:id])
+  end
+
   def create
     @warehouse = Warehouse.find(params[:warehouse_id])
     @category = @warehouse.categories.create(category_params)

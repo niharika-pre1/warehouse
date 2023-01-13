@@ -18,14 +18,3 @@
 
 <%= link_to 'Back', warehouses_path %>
 
-<h2>Categories</h2>
-<% @warehouse.categories.each do |category| %>
-  <p>
-    <strong>name:</strong>
-    <%= category.name %>
-  </p>
-  <%= button_to 'Destroy Category', [category.warehouse, category],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
- 
-<% end %>
