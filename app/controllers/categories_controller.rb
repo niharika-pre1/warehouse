@@ -6,19 +6,19 @@ class CategoriesController < ApplicationController
   end
    
   def show
-    @warehouse = Warehouse.find(params[:warehouse_id])
-    @category = @warehouse.categories.find(params[:id])
+    @warehouse_item = WarehouseItem.find(params[:warehouse_item_id])
+    @category = @warehouse_item.categories.find(params[:id])
   end
 
   def create
-    @warehouse = Warehouse.find(params[:warehouse_id])
-    @category = @warehouse.categories.create(category_params)
-    redirect_to warehouse_path(@warehouse)
+    @warehouse_item = WarehouseItem.find(params[:warehouse_item_id])
+    @category = @warehouse_item.categories.create(category_params)
+    redirect_to  warehouse_item_categories_path
   end
   
   def destroy
-    @warehouse = Warehouse.find(params[:warehouse_id])
-    @category = @warehouse.categories.find(params[:id])
+    @warehouse_item = WarehouseItem.find(params[:warehouse_item_id])
+    @category = @warehouse_item.categories.find(params[:id])
     @category.destroy
     redirect_to categories_index_path(@category)
   end

@@ -4,8 +4,7 @@
     <strong>name:</strong>
     <%= category.name %>
   </p>
-   <td><%= link_to 'Show', warehouse_category_path(warehouse_id: category.warehouse_id,id: category.id) %></td>
-
-
-
+   <td><%= link_to 'Show', category_path(warehouse_item_id: category.warehouse_item_id,id: category.id) %>
+   </td>
+   
 <% end %>

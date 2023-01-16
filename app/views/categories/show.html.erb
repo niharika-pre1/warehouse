@@ -22,8 +22,20 @@
   </p>
   
   <p>
+    <%= form.label :Quantity %><br>
+    <%= form.text_field :quantity %>
+  </p>
+
+  <p>
+    <%= form.label :supplier_id %><br>
+    <%= form.text_field :supplier_id %>
+  </p>
+
+  <p>
     <%= form.submit %>
   </p>
 <% end %>
+
+  <td><%= link_to 'Products', category_products_path(@category) %></td>
 
 <%= link_to 'Back' %>
