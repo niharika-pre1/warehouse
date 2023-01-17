@@ -1,3 +1,3 @@
-class Shopkeeper < ApplicationRecord
-	belongs_to :warehouse_item 
+class Shopkeeper < User
+  belongs_to :warehouse_item
 end

@@ -2,18 +2,33 @@
   <strong>Name:</strong>
   <%= @warehouse_item.name %>
 </p>
- 
 
- <h2>Add a category:</h2>
-<%= form_with(model: [ @warehouse_item, @warehouse_item.categories.build ], local: true) do |form| %>
+<h2>Add a supplier:</h2>
+<%= form_with(model: [ @warehouse_item, @warehouse_item.suppliers.build ], local: true) do |form| %>
   
   <p>
     <%= form.label :name %><br>
     <%= form.text_area :name %>
   </p>
+
+  <p>
+    <%= form.label :mobile %><br>
+    <%= form.text_area :mobile_no %>
+  </p>
+
+  <p>
+    <%= form.label :product_quantity %><br>
+    <%= form.text_area :product_quantity %>
+  </p>
+
+  <p>
+    <%= form.label :product_price %><br>
+    <%= form.text_area :product_price %>
+  </p>
+
   <p>
     <%= form.submit %>
   </p>
-
-  <td><%= link_to 'Categories', warehouse_item_categories_path(@warehouse_item) %></td>
 <% end %>
+
+  

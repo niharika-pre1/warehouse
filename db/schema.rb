@@ -10,21 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_072631) do
-  create_table "categories", force: :cascade do |t|
-    t.integer "warehouse_item_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["warehouse_item_id"], name: "index_categories_on_warehouse_item_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_110400) do
   create_table "owners", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -34,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_072631) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "category_id"
     t.integer "supplier_id"
     t.string "name"
     t.integer "price"
@@ -42,24 +27,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_072631) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
-  create_table "shopkeepers", force: :cascade do |t|
+  create_table "profits", force: :cascade do |t|
     t.integer "warehouse_item_id"
-    t.string "name"
+    t.integer "purchase_price"
+    t.integer "profit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["warehouse_item_id"], name: "index_shopkeepers_on_warehouse_item_id"
+    t.index ["warehouse_item_id"], name: "index_profits_on_warehouse_item_id"
   end
 
-  create_table "suppliers", force: :cascade do |t|
-    t.integer "warehouse_item_id"
+  create_table "users", force: :cascade do |t|
+    t.string "type"
     t.string "name"
+    t.integer "mobile_no"
+    t.integer "product_quantity"
+    t.integer "product_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["warehouse_item_id"], name: "index_suppliers_on_warehouse_item_id"
+    t.integer "warehouse_item_id", null: false
+    t.index ["warehouse_item_id"], name: "index_users_on_warehouse_item_id"
   end
 
   create_table "warehouse_items", force: :cascade do |t|
@@ -70,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_072631) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "users", "warehouse_items"
 end
