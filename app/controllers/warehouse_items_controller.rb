@@ -21,6 +21,10 @@ class WarehouseItemsController < ApplicationController
     @warehouse_item = WarehouseItem.find(params[:id])
   end
 
+  def total_price
+    price * quantity
+  end
+
 end
   private
   def warehouse_params

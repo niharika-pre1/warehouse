@@ -1,34 +1,29 @@
 <h1>SUPPLIERS</h1>
  
-  <% @suppliers.each do |supplier| %>
-<p>
-  <strong>Name:</strong>
-  <%= @supplier.name %>
-</p>
+ <table>
+  <tr>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th>Product_quantity</th>
+    <th>product_price</th>
+    
+    <th colspan="3"></th>
+  </tr>
  
-<p>
-  <strong>mobile:</strong>
-  <%= @supplier.mobile_no %>
-</p>
-
-<p>
-  <strong>Product Quantity:</strong>
-  <%= @supplier.product_quantity %>
-</p>
-
-<p>
-  <strong>Product Price:</strong>
-  <%= @supplier.product_price %>
-</p>
+  <% @suppliers.each do |supplier| %>
+    <tr>
+      <td><%= supplier.name %></td>
+      <td><%= supplier.mobile_no %></td>
+      <td><%= supplier.product_quantity %></td>
+      <td><%= supplier.product_price %></td>
 
 
-
-<td><%= link_to 'Show', warehouse_item_suppliers_path(warehouse_item_id: supplier.warehouse_item_id,id:supplier_id) %></td>
-
+       <td><%= link_to 'Show', supplier_path(supplier) %></td>
+    
+    </tr>
   <% end %>
-  </table>
+</table>
 
-
-
-
+ 
+ 
 
