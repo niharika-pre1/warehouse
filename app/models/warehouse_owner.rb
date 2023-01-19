@@ -1,0 +1,2 @@
+class WarehouseOwner < Client
+end

@@ -1,0 +1,10 @@
+<% if supplier_signed_in? %>
+ <p>Get ready to offer your services</p>
+ <%= link_to 'Log out', destroy_supplier_session_path, method: :delete %>
+<% elsif shopkeeper_signed_in? %>
+ <p>What kind of service do you want?</p>
+ <%= link_to 'Log out', destroy_shopkeeper_session_path, method: :delete %>
+ <% else warehouse_owner_signed_in? %>
+ <p>What kind of service do you want?</p>
+ <%= link_to 'Log out', destroy_warehouse_owner_session_path, method: :delete %>
+<% end %>

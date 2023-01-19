@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_121030) do
+  create_table "clients", force: :cascade do |t|
+    t.integer "warehouse_item_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+    t.index ["warehouse_item_id"], name: "index_clients_on_warehouse_item_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "supplier_id"
     t.integer "order_no"
@@ -28,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "supplier_id"
     t.integer "order_id"
     t.string "name"
     t.integer "price"
@@ -37,7 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_products_on_order_id"
-    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "profits", force: :cascade do |t|
@@ -49,6 +62,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
     t.index ["warehouse_item_id"], name: "index_profits_on_warehouse_item_id"
   end
 
+  create_table "shopkeepers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "type"
     t.string "name"
@@ -57,8 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
     t.integer "product_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "warehouse_item_id", null: false
-    t.index ["warehouse_item_id"], name: "index_users_on_warehouse_item_id"
   end
 
   create_table "warehouse_items", force: :cascade do |t|
@@ -69,6 +90,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_075337) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "products", "orders"
-  add_foreign_key "users", "warehouse_items"
+  create_table "warehouse_owners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

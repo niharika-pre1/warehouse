@@ -1,5 +1,5 @@
-class Supplier < User
+class Supplier < Client
 	belongs_to :warehouse_item
-	has_many :products
 	has_many :orders
+	has_many :products,through: :orders
 end

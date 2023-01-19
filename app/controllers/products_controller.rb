@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products =Product.all
+    @order = Order.find(params[:order_id])
+    @products =@order.products
   end
 
   def show
@@ -8,11 +9,19 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @supplier = Supplier.find(params[:supplier_id])
-    @product = @supplier.products.create(product_params)
-    redirect_to supplier_path(@supplier)
+    @order = Order.find(params[:order_id])
+    @product = @order.products.create(product_params)
+    redirect_to product_path(@product)
   end
-   private
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+ 
+    redirect_to product_path
+  end
+
+  private
     def product_params
       params.require(:product).permit(:name, :price, :description, :quantity)
     end

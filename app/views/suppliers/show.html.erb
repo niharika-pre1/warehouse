@@ -18,34 +18,13 @@
   <%= @supplier.product_price %>
 </p>
 
-
-<h2>Add a Product:</h2>
-<%= form_with(model: [ @supplier, @supplier.products.build ], local: true) do |form| %>
+<h2>Add a order:</h2>
+<%= form_with(model: [ @supplier, @supplier.orders.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :order_no %><br>
+    <%= form.text_field :order_no %>
+  </p>
   
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_area :name %>
-  </p>
-
-  <p>
-    <%= form.label :price %><br>
-    <%= form.text_area :price %>
-  </p>
-
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
-
-  <p>
-    <%= form.label :Quantity %><br>
-    <%= form.text_area :quantity %>
-  </p>
-
-  <p>
     <%= form.submit %>
   </p>
 <% end %>
-
-
-<%= link_to 'Products', supplier_products_path(@supplier) %>
