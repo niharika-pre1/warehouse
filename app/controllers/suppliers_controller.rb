@@ -17,6 +17,5 @@ class SuppliersController < ApplicationController
     def supplier_params
       params.require(:supplier).permit(:name, :mobile_no, :product_quantity, :product_price)
     end
-
 end
 
