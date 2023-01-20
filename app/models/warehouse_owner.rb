@@ -1,2 +1,0 @@
-class WarehouseOwner < Client
-end

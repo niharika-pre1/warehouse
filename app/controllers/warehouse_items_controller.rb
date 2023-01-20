@@ -9,6 +9,7 @@ class WarehouseItemsController < ApplicationController
 
   def create
     @warehouse_item = WarehouseItem.new(warehouse_params)
+ 
     if @warehouse_item.save
      redirect_to @warehouse_item
     else
@@ -24,8 +25,8 @@ class WarehouseItemsController < ApplicationController
     price * quantity
   end
 
-private
+end
+  private
   def warehouse_params
     params.require(:warehouse_item).permit(:name)
   end
-end
